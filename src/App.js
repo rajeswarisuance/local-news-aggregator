@@ -22,9 +22,15 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="App">
-        Hello
-        <Weather />
-        <NewsComponent />
+        <div className="nav_bar">
+          <div className="header">Public Press</div>
+          <div className="weather">
+            <Weather />
+          </div>
+        </div>
+        <div className="newstab">
+          <NewsComponent />
+        </div>
       </div>
     );
   }

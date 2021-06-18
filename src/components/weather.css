@@ -1,0 +1,10 @@
+* {
+  color: black;
+}
+.weather-item {
+  margin-left: 0.5rem;
+  margin-right: 1rem;
+}
+.slash {
+  margin: 0 1rem;
+}

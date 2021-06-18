@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import { getWeather, getNews } from "./api";
+import NewsComponent from "./components/news";
+import Weather from "./components/weather";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component {
+  componentDidMount() {
+    this.getPosition().then(position => {
+      getWeather(
+        position.coords.latitude,
+        position.coords.longitude
+      ).then(data => console.log(data));
+    });
+    getNews("google", "en").then(data => console.log(data));
+  }
+  getPosition() {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+  }
+  render() {
+    return (
+      <div className="App">
+        Hello
+        <Weather />
+        <NewsComponent />
+      </div>
+    );
+  }
 }
-
-export default App;

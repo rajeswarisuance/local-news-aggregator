@@ -3,8 +3,17 @@ import React from "react";
 import { getWeather, getNews } from "./api";
 import NewsComponent from "./components/news";
 import Weather from "./components/weather";
+// import CloudRoundedIcon from "@material-ui/icons/CloudRounded";
+import Language from "./components/language";
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLanguageDropDownOpened: false,
+      isWeatherClicked: false
+    };
+  }
   componentDidMount() {
     this.getPosition().then(position => {
       getWeather(
@@ -19,14 +28,17 @@ export default class App extends React.Component {
       navigator.geolocation.getCurrentPosition(resolve, reject);
     });
   }
+
   render() {
     return (
       <div className="App">
         <div className="nav_bar">
           <div className="header">Public Press</div>
-          <div className="weather">
+          <Language />
+
+          {/* <div className="weather">
             <Weather />
-          </div>
+          </div> */}
         </div>
         <div className="newstab">
           <NewsComponent />

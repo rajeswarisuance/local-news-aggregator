@@ -1,33 +1,11 @@
 import React, { Component } from "react";
 import { getNews } from "../api";
 import Select from "react-select";
+import TextField from "@material-ui/core/TextField";
+
 import "./news.css";
 import NewsCard from "./newsCard";
-const languages = [
-  { label: "Arabic", value: "ar" },
-  { label: "German", value: "de" },
-  { label: "Greek", value: "el" },
-  { label: "English", value: "en" },
-  { label: "Spanish", value: "es" },
-  { label: "French", value: "fr" },
-  { label: "Hebrew", value: "he" },
-  { label: "Hindi", value: "hi" },
-  { label: "Italian", value: "it" },
-  { label: "Japanese", value: "ja" },
-  { label: "Malayalam", value: "ml" },
-  { label: "Marathi", value: "mr" },
-  { label: "Dutch", value: "nl" },
-  { label: "Norwegian", value: "no" },
-  { label: "Portuguese", value: "pt" },
-  { label: "Romanian", value: "ro" },
-  { label: "Russian", value: "ru" },
-  { label: "Swedish", value: "sv" },
-  { label: "Tamil", value: "ta" },
-  { label: "Telugu", value: "te" },
-  { label: "Ukrainian", value: "uk" },
-  { label: "Chinese", value: "zh" }
-];
-
+// import * as data from "../language";
 class NewsComponent extends Component {
   constructor(props) {
     super(props);
@@ -62,28 +40,46 @@ class NewsComponent extends Component {
   render() {
     const { lang, articles } = this.state;
     return (
-      <div className="searchbox">
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Search:
-            <input
-              type="text"
-              value={this.state.search}
-              onChange={this.handleInputChange}
-            />
-          </label>
-          <Select
-            placeholder="Select language"
-            className="select"
-            value={lang}
-            onChange={this.handleSelectChange}
-            options={languages}
-            defaultValue={{ label: "English", value: "en" }}
+      <div>
+        {/* <Select
+          placeholder="Language"
+          className="select"
+          value={lang}
+          onChange={this.handleSelectChange}
+          options={languages}
+          defaultValue={{ label: "English", value: "en" }}
+        /> */}
+
+        <div id="cover">
+          <form>
+            <div className="tb">
+              <div className="td">
+                <input type="text" placeholder="Search" required />
+              </div>
+              <div className="td" id="s-cover">
+                <button type="submit">
+                  <div id="s-circle"></div>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <form onSubmit={this.handleSubmit} className="searchbox">
+          <TextField
+            id="filled-basic"
+            variant="filled"
+            size="small"
+            label="Search"
+            value={this.state.search}
+            onChange={this.handleInputChange}
           />
+
           <input type="submit" value="Submit" />
         </form>
         {articles.map(article => (
-          <NewsCard key={article.title} value={article} />
+          <NewsCard key={article.url} value={article} />
         ))}
       </div>
     );

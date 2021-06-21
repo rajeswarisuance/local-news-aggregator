@@ -4,41 +4,45 @@
   text-align: center;
   font-family: "Poppins", sans-serif;
   justify-content: center;
-  background: #8e9eab;
-  background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);
-  background: linear-gradient(to right, #eef2f3, #8e9eab);
+  background: #5c258d;
+  background: -webkit-linear-gradient(to right, #4389a2, #5c258d);
+  background: linear-gradient(to right, #4389a2, #5c258d);
+
   min-height: 100vh;
   overflow: auto;
   color: rgb(233, 252, 252);
 }
 .nav_bar {
-  border: 2px solid red;
-  min-height: 15vh;
+  /* border: 2px solid red; */
+  min-height: 10vh;
+  background: #16222a;
+  background: -webkit-linear-gradient(to right, #3a6073, #16222a);
+  background: linear-gradient(to right, #3a6073, #16222a);
+
+  /* overflow: auto; */
 }
 .newstab {
-  border: 2px solid blue;
   min-height: 85vh;
 }
-.buttons {
-  border: 2px solid black;
+.rightTab {
+  /* border: 2px solid black; */
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-evenly;
   align-items: flex-end;
 }
 .header {
   float: left;
   color: burlywood;
   text-align: center;
-  padding: 12px;
+  padding: 1rem;
   text-decoration: none;
   font-size: 8vh;
   text-shadow: 2px 2px brown;
   line-height: 25px;
   border-radius: 4px;
+  cursor: context-menu;
 }
-.weather {
-  float: right;
-}
+
 @media screen and (max-width: 600px) {
   .header {
     float: none;
@@ -46,15 +50,14 @@
     text-align: left;
     font-size: 7vh;
   }
-  .weather {
-    float: none;
-  }
 }
-
-.languageList {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid green;
+@media screen and (min-width: 600px) {
+  .rightTab {
+    margin: 1rem;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    float: right;
+  }
 }

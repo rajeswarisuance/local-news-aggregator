@@ -1,47 +1,40 @@
 import "./App.css";
 import React from "react";
-import { getWeather, getNews } from "./api";
+import { getWeather, getNews, getIcon } from "./api";
 import NewsComponent from "./components/news";
 import Weather from "./components/weather";
-// import CloudRoundedIcon from "@material-ui/icons/CloudRounded";
 import Language from "./components/language";
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLanguageDropDownOpened: false,
-      isWeatherClicked: false
+      language: { label: "English", value: "en" }
     };
   }
-  componentDidMount() {
-    this.getPosition().then(position => {
-      getWeather(
-        position.coords.latitude,
-        position.coords.longitude
-      ).then(data => console.log(data));
-    });
-    getNews("google", "en").then(data => console.log(data));
-  }
-  getPosition() {
-    return new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(resolve, reject);
-    });
-  }
 
+  handleCallBack = language => {
+    this.setState({ language });
+  };
   render() {
     return (
       <div className="App">
         <div className="nav_bar">
           <div className="header">Public Press</div>
-          <Language />
-
-          {/* <div className="weather">
-            <Weather />
-          </div> */}
+          <div className="rightTab">
+            <div className="weather">
+              <Weather />
+            </div>
+            <div className="language">
+              <Language
+                message="Data from Parent"
+                dataCallback={this.handleCallBack}
+              />
+            </div>
+          </div>
         </div>
         <div className="newstab">
-          <NewsComponent />
+          <NewsComponent language={this.state.language} />
         </div>
       </div>
     );

@@ -4,22 +4,22 @@ import LanguageOutlinedIcon from "@material-ui/icons/LanguageOutlined";
 import { Button } from "@material-ui/core";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import * as data from "../language";
-import "./language.css";
+import "../styles/language.css";
+
 const languages = data.languages;
 
-export default function Language() {
+export default function Language(props) {
   const dropdownRef = useRef(null);
   const [val, setValue] = useState("English");
   const [isActive, setIsActive] = useDetectOutside(dropdownRef, false);
   const onClick = () => setIsActive(!isActive);
+  const { dataCallback } = props;
   return (
     <div className="menu-container">
       <Button variant="contained" onClick={onClick} className="menu-trigger">
-        <span>
-          <LanguageOutlinedIcon />
-          <span>{val}</span>
-          <ArrowDropDownIcon />
-        </span>
+        <LanguageOutlinedIcon />
+        <span>{val}</span>
+        <ArrowDropDownIcon />
       </Button>
       <div
         ref={dropdownRef}
@@ -27,7 +27,13 @@ export default function Language() {
       >
         <ul>
           {languages.map(lang => (
-            <li key={lang.value} onClick={() => setValue(lang.label)}>
+            <li
+              key={lang.value}
+              onClick={() => {
+                setValue(lang.label);
+                dataCallback(lang);
+              }}
+            >
               {lang.label}
             </li>
           ))}

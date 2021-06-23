@@ -5,3 +5,13 @@
   padding: 2rem;
   min-height: 10vh;
 }
+.search_div {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.search {
+  position: relative;
+  display: flex;
+  padding: 10px;
+}

@@ -7,10 +7,9 @@
   background: #5c258d;
   background: -webkit-linear-gradient(to right, #4389a2, #5c258d);
   background: linear-gradient(to right, #4389a2, #5c258d);
-
   min-height: 100vh;
-  overflow: auto;
   color: rgb(233, 252, 252);
+  overflow: auto;
 }
 .nav_bar {
   /* border: 2px solid red; */
@@ -18,8 +17,6 @@
   background: #16222a;
   background: -webkit-linear-gradient(to right, #3a6073, #16222a);
   background: linear-gradient(to right, #3a6073, #16222a);
-
-  /* overflow: auto; */
 }
 .newstab {
   min-height: 85vh;

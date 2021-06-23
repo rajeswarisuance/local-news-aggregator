@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Alice&display=swap");
+.clouds_bg {
+  background-image: url("../assets/clouds.png");
+  background-size: cover;
+  min-height: 10vh;
+  /* text-shadow: 2px 2px white; */
+}
+.rain_bg {
+  background-image: url("../assets/rain.png");
+  background-size: cover;
+  min-height: 25vh;
+
+  /* color: black;
+  text-shadow: 2px 2px white; */
+}
+.weather-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  font-family: "Alice", serif;
+}
+.temperature {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 5px;
+  color: black;
+  text-shadow: 2px 2px white;
+}
+.feels_like {
+  margin: 0;
+  font-style: italic;
+  font-weight: bold;
+}
+.temp-main {
+  margin: 0 0.5rem;
+}
+
+div.weather-icon {
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+  width: 120px;
+}
+.weather-icon img {
+  width: 100px;
+  height: 100px;
+  margin: -5vh;
+}
+.caption {
+  display: block;
+  text-transform: capitalize;
+}
+
+.weather-other {
+  display: flex;
+}

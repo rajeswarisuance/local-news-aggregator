@@ -3,6 +3,7 @@ import { getNews, getHeadlines } from "../api";
 import TextField from "@material-ui/core/TextField";
 import "../styles/news.css";
 import NewsCard from "./newsCard";
+import SearchIcon from "@material-ui/icons/Search";
 class NewsComponent extends Component {
   constructor(props) {
     super(props);
@@ -46,17 +47,21 @@ class NewsComponent extends Component {
     const { articles } = this.state;
     return (
       <div>
-        <form onSubmit={this.handleSubmit} className="searchbox">
-          <TextField
-            id="filled-basic"
-            variant="filled"
-            size="small"
-            label="Search"
-            value={this.state.search}
-            onChange={this.handleInputChange}
-          />
-          <input type="submit" value="Submit" />
-        </form>
+        <div className="search_div">
+          <form onSubmit={this.handleSubmit} className="search">
+            <TextField
+              id="filled-basic"
+              variant="filled"
+              size="small"
+              label="Search"
+              value={this.state.search}
+              onChange={this.handleInputChange}
+            />
+            <button type="submit">
+              <SearchIcon />
+            </button>
+          </form>
+        </div>
         <div className="newslists">
           {/* change map to forEach  */}
           {(articles || []).map(article => (

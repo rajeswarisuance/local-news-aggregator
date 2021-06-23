@@ -1,6 +1,5 @@
 import "./App.css";
 import React from "react";
-import { getWeather, getNews, getIcon } from "./api";
 import NewsComponent from "./components/news";
 import Weather from "./components/weather";
 import Language from "./components/language";

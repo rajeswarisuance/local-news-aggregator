@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { getNews, getHeadlines } from "../api";
-import TextField from "@material-ui/core/TextField";
 import "../styles/news.css";
 import NewsCard from "./newsCard";
 import SearchIcon from "@material-ui/icons/Search";
 class NewsComponent extends Component {
   constructor(props) {
     super(props);
+    this.inputRef = React.createRef();
+    this.submitRef = React.createRef();
     this.state = {
       search: "",
       articles: []
@@ -43,19 +44,23 @@ class NewsComponent extends Component {
     event.preventDefault();
     this.fetchNews();
   };
+  handleKeyDown = e => {
+    if (e.key === "Enter") this.fetchNews();
+  };
+
   render() {
     const { articles } = this.state;
     return (
       <div>
         <div className="search_div">
           <form onSubmit={this.handleSubmit} className="search">
-            <TextField
-              id="filled-basic"
-              variant="filled"
-              size="small"
-              label="Search"
+            <input
+              placeholder="Search"
               value={this.state.search}
               onChange={this.handleInputChange}
+              ref={this.inputRef}
+              onKeyDown={this.handleKeyDown}
+              required
             />
             <button type="submit">
               <SearchIcon />

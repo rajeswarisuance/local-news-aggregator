@@ -1,6 +1,3 @@
-const apiToken = "53d40ad6a6655fadcf3e4a83a1cb4ba2";
-const weather_api_key = "403f30534d6f69169bd1916b21e47810";
-
 export async function getHeadlines(lang) {
   const url = `https://gnews.io/api/v4/top-headlines?lang=${lang}&token=${process.env.REACT_APP_NEWS_KEY}`;
   const headlines = await fetch(url).then(response => response.json());

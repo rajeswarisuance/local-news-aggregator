@@ -25,10 +25,11 @@ export default class App extends React.Component {
               <Weather />
             </div>
             <div className="language">
-              <Language
+              <Language dataCallback={this.handleCallBack} />
+              {/* <Language
                 message="Data from Parent"
                 dataCallback={this.handleCallBack}
-              />
+              /> */}
             </div>
           </div>
         </div>

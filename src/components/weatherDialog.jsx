@@ -1,14 +1,16 @@
+import React from "react";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import moment from "moment";
 import "../styles/weather.css";
-import { useRef } from "react";
+// import { useRef, forwardRef } from "react";
 import Humid from "../assets/humid.svg";
 import Wind from "../assets/wind.svg";
+import Sunset from "../assets/sunset.svg";
+import Sunrise from "../assets/sunrise.svg";
 
-export default function WeatherDialog(props) {
-  const dialogRef = useRef(null);
+function WeatherDialog(props, ref) {
   const { onClose, open, temperature, errorMessage } = props;
   const handleClose = () => {
     onClose();
@@ -31,10 +33,8 @@ export default function WeatherDialog(props) {
         onClose={handleClose}
         aria-labelledby="temperature-title"
         open={open}
-        ref={dialogRef}
+        ref={ref}
       >
-        {/* <DialogTitle id="temperature-title">Temperature</DialogTitle> */}
-        {/* <DialogContent className="dialog_box"> */}
         <DialogContent className={isRainBackground ? "rain_bg" : "clouds_bg"}>
           <div className="weather-main">
             <div>
@@ -56,14 +56,25 @@ export default function WeatherDialog(props) {
             </div>
           </div>
           <div className="weather-other">
-            <div className="weather-sun">
-              <span>Sunrise: {sunrise}</span>
-              <br />
-              <span>Sunset : {sunset}</span>
+            <div className="weather-info">
+              <div className="icon-details">
+                <img src={Sunrise} alt="Sunrise" />: &nbsp;
+                <span>{sunrise} &nbsp;</span>
+              </div>
+              <div className="icon-details">
+                <img src={Sunset} alt="Sunset" />: &nbsp;
+                <span>{sunset} &nbsp;</span>
+              </div>
             </div>
             <div className="weather-info">
-              <img src={Humid} alt="Humidity" />: {humidity}% <br />
-              <img src={Wind} alt="Wind" />: {speed} km/hr
+              <div className="icon-details">
+                <img src={Humid} alt="Humidity" />: &nbsp;
+                <span>{humidity} % &nbsp;</span>
+              </div>
+              <div className="icon-details">
+                <img src={Wind} alt="Wind" />: &nbsp;
+                <span>{Math.round(speed)}kmph</span>
+              </div>
             </div>
           </div>
         </DialogContent>
@@ -75,7 +86,7 @@ export default function WeatherDialog(props) {
         onClose={handleClose}
         aria-labelledby="temperature-title"
         open={open}
-        ref={dialogRef}
+        ref={ref}
       >
         <DialogTitle id="temperature-title">Loading..</DialogTitle>
         <DialogContent>{errorMessage}</DialogContent>
@@ -83,3 +94,5 @@ export default function WeatherDialog(props) {
     );
   }
 }
+const forwardedInput = React.forwardRef(WeatherDialog);
+export default forwardedInput;

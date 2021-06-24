@@ -1,4 +1,4 @@
-import React, { Component, createRef } from "react";
+import React, { Component } from "react";
 import { getWeather } from "../api";
 import Button from "@material-ui/core/Button";
 import CloudIcon from "@material-ui/icons/Cloud";
@@ -6,8 +6,7 @@ import WeatherDialog from "./weatherDialog";
 class Weather extends Component {
   constructor(props) {
     super(props);
-    this.buttonRef = createRef();
-    this.dialogRef = createRef();
+    this.dialogRef = React.createRef();
     this.state = {
       lat: null,
       lon: null,

@@ -47,6 +47,7 @@ div.weather-icon {
   height: 100px;
   margin: -5vh;
 }
+
 .caption {
   display: block;
   text-transform: capitalize;
@@ -54,4 +55,16 @@ div.weather-icon {
 
 .weather-other {
   display: flex;
+}
+.weather-info {
+  display: inline;
+  font-weight: 500;
+}
+.weather-info img {
+  width: 2rem;
+}
+.icon-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

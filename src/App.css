@@ -4,9 +4,9 @@
   text-align: center;
   font-family: "Poppins", sans-serif;
   justify-content: center;
-  background: #5c258d;
-  background: -webkit-linear-gradient(to right, #4389a2, #5c258d);
-  background: linear-gradient(to right, #4389a2, #5c258d);
+  background: #2c3e50; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #fd746c, #2c3e50);
+  background: linear-gradient(to right, #fd746c, #2c3e50);
   min-height: 100vh;
   color: rgb(233, 252, 252);
   overflow: auto;
@@ -34,6 +34,7 @@
   padding: 1rem;
   text-decoration: none;
   font-size: 8vh;
+  font-weight: bold;
   text-shadow: 2px 2px brown;
   line-height: 25px;
   border-radius: 4px;
